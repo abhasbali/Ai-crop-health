@@ -1,0 +1,72 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cropuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-croppass}
+      POSTGRES_DB: ${POSTGRES_DB:-cropdb}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cropuser}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://${POSTGRES_USER:-cropuser}:${POSTGRES_PASSWORD:-croppass}@db:5432/${POSTGRES_DB:-cropdb}
+      - JWT_SECRET=${JWT_SECRET:-supersecretjwt}
+      - MODEL_PATH=${MODEL_PATH:-/app/model/model.pt}
+      - FLASK_ENV=production
+      - FLASK_APP=app.py
+      # Real satellite and weather data API keys
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+      - NASA_API_KEY=${NASA_API_KEY}
+      - USE_REAL_SATELLITE_DATA=${USE_REAL_SATELLITE_DATA:-true}
+      - SENTINELHUB_CLIENT_ID=${SENTINELHUB_CLIENT_ID}
+      - SENTINELHUB_CLIENT_SECRET=${SENTINELHUB_CLIENT_SECRET}
+      # Google Earth Engine configuration
+      - GOOGLE_EARTH_ENGINE_PROJECT=${GOOGLE_EARTH_ENGINE_PROJECT:-uber-462705}
+      - GOOGLE_EARTH_ENGINE_SERVICE_ACCOUNT=${GOOGLE_EARTH_ENGINE_SERVICE_ACCOUNT:-abhasbali@uber-462705.iam.gserviceaccount.com}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+      # Multi-Spectral Analysis Configuration
+      - ENABLE_SPECTRAL_ANALYSIS=${ENABLE_SPECTRAL_ANALYSIS:-true}
+      - ENABLE_VISUALIZATIONS=${ENABLE_VISUALIZATIONS:-true}
+      - MATPLOTLIB_BACKEND=${MATPLOTLIB_BACKEND:-Agg}
+      - PYTHONPATH=/app
+    volumes:
+      - ./backend:/app
+      - model_data:/app/model
+      - uploads_data:/app/uploads
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    build: ./frontend
+    environment:
+      - VITE_API_BASE=${VITE_API_BASE:-http://localhost:5000}
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
+  model_data:
+  uploads_data:
+

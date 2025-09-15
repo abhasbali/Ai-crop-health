@@ -1,0 +1,439 @@
+# ===================================
+# Agricultural Monitoring Project
+# Full Stack .gitignore
+# ===================================
+
+# =================
+# Python Backend
+# =================
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.env/
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Flask instance folder
+instance/
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# =================
+# React Frontend
+# =================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Production build
+/frontend/build
+/frontend/dist
+dist-ssr
+*.local
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# ESLint cache
+.eslintcache
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# =================
+# Database Files
+# =================
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+/backend/database/crop_health.db
+/backend/database/*.db
+
+# PostgreSQL
+*.pgsql
+
+# MySQL
+*.sql
+
+# =================
+# Machine Learning Models
+# =================
+
+# Model files
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.model
+*.pt
+*.pth
+*.ckpt
+/backend/model/
+/models/
+*.weights
+
+# Training data and datasets
+/data/
+/dataset/
+/datasets/
+*.csv
+*.json
+*.npz
+*.npy
+
+# Jupyter notebooks (if containing sensitive data)
+# *.ipynb
+
+# =================
+# Satellite Data & API Keys
+# =================
+
+# Satellite imagery and data files
+/satellite_data/
+*.tif
+*.tiff
+*.geotiff
+*.hdf
+*.he5
+
+# Google Earth Engine credentials
+service-account-key.json
+ee-service-account.json
+gee-credentials.json
+
+# API key files
+api_keys.json
+credentials.json
+secrets.json
+
+# =================
+# File Uploads & Media
+# =================
+
+# User uploads
+/backend/uploads/
+/uploads/
+/static/uploads/
+/media/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.DS_Store
+Thumbs.db
+
+# =================
+# Development Tools
+# =================
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =================
+# Docker
+# =================
+
+# Docker files (if not needed in repo)
+# Dockerfile
+# docker-compose.yml
+# docker-compose.override.yml
+.dockerignore
+
+# =================
+# Logs
+# =================
+
+# Application logs
+*.log
+logs/
+/backend/logs/
+/frontend/logs/
+
+# Server logs
+access.log
+error.log
+app.log
+debug.log
+
+# =================
+# Testing
+# =================
+
+# Test results
+test-results/
+coverage/
+.coverage
+htmlcov/
+
+# Test databases
+test.db
+test.sqlite
+
+# =================
+# Deployment
+# =================
+
+# Production config files
+# docker-compose.prod.yml
+# nginx.conf
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+
+# Deployment scripts (if containing sensitive info)
+# deploy.sh
+# production.env
+
+# =================
+# Backup Files
+# =================
+
+*.bak
+*.backup
+*.old
+*.orig
+
+# =================
+# Project Specific
+# =================
+
+# Test files (optional - remove if you want to keep test files in repo)
+/backend/test_*.py
+/backend/*_test.py
+
+# Documentation builds
+/docs/_build/
+/documentation/build/
+
+# Temporary analysis files
+analysis_*.json
+prediction_*.json
+spectral_*.json
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# =================
+# Git
+# =================
+
+# Git files
+.git/
+.gitattributes
+
+# =================
+# Miscellaneous
+# =================
+
+# Temporary directories
+tmp/
+temp/
+.tmp/
+
+# System files
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+*.swo
+
+# Editor backups
+*~
+*.orig
+
+# Package manager lock files (choose one)
+# package-lock.json  # Uncomment if using yarn exclusively
+# yarn.lock         # Uncomment if using npm exclusively
+
+# Local configuration overrides
+local.env
+.env.local.override
