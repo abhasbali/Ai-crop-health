@@ -121,8 +121,7 @@ cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-export FLASK_ENV=development
-flask run
+python app.py
 ```
 
 #### Frontend Development
